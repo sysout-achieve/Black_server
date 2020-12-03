@@ -16,6 +16,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(controllers = HelloController.class)
 public class HelloControllerTest {
 
+    String name = "hello";
+    int amount = 1000;
+
     @Autowired
     private MockMvc mvc;
 
@@ -29,14 +32,12 @@ public class HelloControllerTest {
 
     @Test
     public void helloDto가_리턴() throws Exception {
-        String name = "hello";
-        int amount = 1000;
         mvc.perform(
                 get("/hello/dto")
                         .param("name", name)
                         .param("amount", String.valueOf(amount)))
                 .andExpect(status().isOk())
-                .andExpect( jsonPath("$.name", is(name)))
-                .andExpect( jsonPath("$.amount", is(amount)));
+                .andExpect(jsonPath("$.name", is(name)))
+                .andExpect(jsonPath("$.amount", is(amount)));
     }
 }
