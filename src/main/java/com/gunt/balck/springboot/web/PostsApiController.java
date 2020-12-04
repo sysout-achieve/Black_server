@@ -5,10 +5,7 @@ import com.gunt.balck.springboot.web.dto.PostResponseDto;
 import com.gunt.balck.springboot.web.dto.PostsSaveRequestDto;
 import com.gunt.balck.springboot.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -26,7 +23,8 @@ public class PostsApiController {
         return postsService.update(id, requestDto);
     }
 
-    public PostResponseDto findById(@PathVariable Long id){
+    @GetMapping("/api/v1/posts/{id}")
+    public PostResponseDto findById(@PathVariable Long id) {
         return postsService.findById(id);
     }
 }
