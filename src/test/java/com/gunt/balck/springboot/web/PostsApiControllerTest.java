@@ -5,6 +5,7 @@ import com.gunt.balck.springboot.domain.posts.PostsRepository;
 import com.gunt.balck.springboot.web.dto.PostsSaveRequestDto;
 import com.gunt.balck.springboot.web.dto.PostsUpdateRequestDto;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,20 @@ public class PostsApiControllerTest {
     @Autowired
     private PostsRepository postsRepository;
 
+    PostsSaveRequestDto requestDto;
+    String title = "title";
+    String content = "content";
+
+    @Before
+    public void setUp() throws Exception {
+        //given
+        requestDto = PostsSaveRequestDto.builder()
+                .title(title)
+                .content(content)
+                .author("author")
+                .build();
+    }
+
     @After
     public void tearDown() throws Exception {
         postsRepository.deleteAll();
@@ -43,16 +58,11 @@ public class PostsApiControllerTest {
     @Test
     public void Posts_등록된다() {
         //given
-        String title = "title";
-        String content = "content";
-        PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
-                .title(title)
-                .content(content)
-                .author("author")
-                .build();
         String url = "http://localhost:" + port + "/api/v1/posts";
+
         //when
         ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, requestDto, Long.class);
+
         //then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody()).isGreaterThan(0L);
@@ -84,7 +94,7 @@ public class PostsApiControllerTest {
         HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
 
         //when
-        ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity, Long.class);
+        ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Long.class);
 
         //then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -93,6 +103,25 @@ public class PostsApiControllerTest {
         List<Posts> all = postsRepository.findAll();
         assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
         assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
-
     }
+
+    @Test
+    public void Posts_삭제() {
+        //given
+        Posts posts = postsRepository.save(Posts.builder()
+                .title("title")
+                .content("content")
+                .author("author")
+                .build());
+        Long deleteId = posts.getId();
+        String url = "http://localhost:" + port + "/api/v1/posts/" + deleteId;
+
+        //when
+        restTemplate.delete(url);
+
+        //then
+        List<Posts> all = postsRepository.findAll();
+        assert (all.isEmpty());
+    }
+
 }
