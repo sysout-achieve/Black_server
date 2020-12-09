@@ -46,7 +46,6 @@ public class PostsApiControllerTest {
 
     private MockMvc mvc;
 
-
     PostsSaveRequestDto requestDto;
     String title = "title";
     String content = "content";
