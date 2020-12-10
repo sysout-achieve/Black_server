@@ -70,7 +70,7 @@ public class PostsApiControllerTest {
         postsRepository.deleteAll();
     }
 
-    @Test
+    @Test(timeout = 1000)
     @WithMockUser(roles = "USER")
     public void Posts_등록된다() throws Exception {
         //given
@@ -92,7 +92,7 @@ public class PostsApiControllerTest {
         assertThat(all.get(0).getContent()).isEqualTo(content);
     }
 
-    @Test
+    @Test(timeout = 1000)
     @WithMockUser(roles = "USER")
     public void Posts_수정된다() throws Exception {
         //given
@@ -131,7 +131,7 @@ public class PostsApiControllerTest {
         assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
     }
 
-    @Test
+    @Test(timeout = 1000)
     @WithMockUser(roles = "USER")
     public void Posts_삭제() throws Exception{
         //given

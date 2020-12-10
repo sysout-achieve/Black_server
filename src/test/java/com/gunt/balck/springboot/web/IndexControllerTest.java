@@ -42,7 +42,7 @@ public class IndexControllerTest {
                 .build();
     }
 
-    @Test
+    @Test(timeout = 1000)
     @WithMockUser(roles = "USER")
     public void 메인페이지_로딩() throws Exception{
         //when

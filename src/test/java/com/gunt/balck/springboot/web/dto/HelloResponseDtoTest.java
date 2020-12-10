@@ -12,7 +12,7 @@ public class HelloResponseDtoTest {
     public void setUp() throws Exception {
     }
 
-    @Test
+    @Test(timeout = 1000)
     public void 롬복_기능_테스트() {
         //given
         String name = "test";
