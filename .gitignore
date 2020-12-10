@@ -40,5 +40,4 @@ out/
 
 
 ### TEST 제외 ###
-/src/test/java/com/gunt/balck/springboot/domain/posts/
 /src/test/java/com/gunt/balck/springboot/web/
