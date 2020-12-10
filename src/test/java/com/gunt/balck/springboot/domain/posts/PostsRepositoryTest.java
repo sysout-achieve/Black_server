@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.core.Is.is;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {PostsRepository.class})
+@SpringBootTest
 public class PostsRepositoryTest {
 
     @Autowired
