@@ -21,7 +21,7 @@ public class PostsRepositoryTest {
     @Autowired
     PostsRepository postsRepository;
 
-    @Test
+    @Test(timeout = 100)
     public void exampleTest() {
         String str = "!!!!!!!!!!!!!!!!!!!";
         System.out.println(str);
