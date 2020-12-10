@@ -37,3 +37,8 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
+### TEST 제외 ###
+**/src/test/com/gunt/balck/springboot/domain.posts
+**/src/test/com/gunt/balck/springboot/web
