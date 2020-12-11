@@ -24,7 +24,7 @@ public class PostsRepositoryTest {
         postsRepository.deleteAll();
     }
 
-    @Test(timeout = 100)
+    @Test(timeout = 5000)
     public void 게시글저장_불러오기() {
         //given
         String title = "테스트 게시글";
@@ -46,7 +46,7 @@ public class PostsRepositoryTest {
         assertThat(posts.getContent()).isEqualTo(content);
     }
 
-    @Test(timeout = 1000)
+    @Test(timeout = 5000)
     public void BaseTimeEntity_등록() {
         //given
         LocalDateTime now = LocalDateTime.of(2019, 6, 4, 0, 0, 0);
