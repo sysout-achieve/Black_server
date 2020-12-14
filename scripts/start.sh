@@ -5,7 +5,7 @@ ABSDIR=$(dirname $ABSPATH)
 source ${ABSDIR}/profile.sh
 
 REPOSITORY=/home/ubuntu/app/step3
-PROJECT_NAME=was-service
+PROJECT_NAME=Black_server
 
 echo "> Build 파일복사"
 echo "> cp $REPOSITORY/zip/*.jar $REPOSITORY/"
@@ -23,6 +23,7 @@ chmod +x $JAR_NAME
 echo "> $JAR_NAME 실행"
 
 IDLE_PROFILE=$(find_idle_profile)
+
 echo "> $JAR_NAME 를 profile=$IDLE_PROFILE 로 실행합니다."
 nohup java -jar \
     -Dspring.config.location=classpath:/application.properties,classpath:/application-$IDLE_PROFILE.properties,/home/ubuntu/app/application-oauth.properties,/home/ubuntu/app/application-real-db.properties \
