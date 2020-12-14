@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPOSITORY=/home/ubuntu/app/step2
-PROJECT_NAME=was-service
+PROJECT_NAME=Black_server
 
 echo "> Build 파일 복사"
 
@@ -9,7 +9,7 @@ cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> 현재 구동중인 애플리케이션 pid 확인"
 
-CURRENT_PID=$(pgrep -fl was-service | grep jar | awk '{print $1}')
+CURRENT_PID=$(pgrep -fl Black_server | grep jar | awk '{print $1}')
 
 echo "현재 구동중인 어플리케이션 PID : $CURRENT_PID"
 
