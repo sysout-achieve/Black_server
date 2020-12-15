@@ -24,3 +24,4 @@ hooks:
     - location: health.sh
       timeout: 60
       runas: ubuntu
+
