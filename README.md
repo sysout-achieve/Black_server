@@ -1,5 +1,12 @@
 # 스프링부트로 was만들기
 
+## 프로젝트 spec
+서버 환경 구성 (aws) : EC2인스턴스, RDS, S3, CodeDeploy, Travis CI, nginnX
+
+ Framework: SpringBoot
+ DB: MariaDB, Spring Data JPA
+ TEST: JUnit4
+ 
 
 ## 목표
 서비스 회사의 기술을 이해하고, 어떤 방식으로 기술을 적용하는지, 그들과 함께 일하기 위해서 비슷한 사고로 프로그래밍을 하고 보완점을 찾기 위해 노력
